@@ -1,0 +1,30 @@
+name: Registrar tasas
+on:
+  schedule:
+    - cron: '17 1,7,13,19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: registro-tasas
+  cancel-in-progress: false
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run update
+      - name: Guardar observación
+        run: |
+          git config user.name 'BCV Datos'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data/latest.json public/data/usdt.json public/data/history.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: registrar tasas y observación USDT'
+            git push
+          fi

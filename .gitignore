@@ -1,0 +1,7 @@
+.vercel
+.serena
+node_modules
+.env*
+dist
+evidence
+.DS_Store

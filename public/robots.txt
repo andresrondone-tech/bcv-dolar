@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dolar.andresrondone.com/sitemap.xml
