@@ -31,4 +31,4 @@ Fuentes: https://www.bcv.org.ve/estadisticas/tipo-cambio-de-referencia-smc · ht
 
 ## iPhone y pago móvil
 
-Pantalla principal: entrada USD a BCV y copia de solo el importe en Bs, con coma decimal y sin separadores de miles. La diferencia USDT/BCV usa `(USDT / BCV - 1) × 100`. Las herramientas avanzadas permanecen plegadas. App instalable con manifest standalone, Apple touch icon, áreas seguras y service worker. Después de una visita conectada puede abrirse sin conexión; la UI marca los datos guardados. Apple: https://support.apple.com/es-us/guide/iphone/iphea86e5236/ios
+Pantalla principal: entrada con selector BCV (predeterminado), euro o USDT y copia de solo el importe en Bs, con coma decimal y sin separadores de miles. La diferencia USDT/BCV usa `(USDT / BCV - 1) × 100`. Las herramientas avanzadas permanecen plegadas. App instalable con manifest standalone, Apple touch icon, áreas seguras y service worker. Después de una visita conectada puede abrirse sin conexión; la UI marca los datos guardados. Apple: https://support.apple.com/es-us/guide/iphone/iphea86e5236/ios

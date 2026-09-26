@@ -1,4 +1,4 @@
-const VERSION='taza-app-v3';
+const VERSION='taza-app-v4';
 const SHELL=VERSION+'-shell';
 const DATA='taza-data-v1';
 const ASSETS=['/','/style.css','/fonts.css','/app.js','/core.js','/install.js','/manifest.webmanifest','/favicon.svg','/icons/icon-192.png','/icons/icon-512.png','/icons/apple-touch-icon.png'];

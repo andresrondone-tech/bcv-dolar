@@ -10,3 +10,10 @@ export function chartPoints(rows,currency,end,days){const index={usd:1,eur:2,usd
 
 export function bankAmount(amount){return Number.isFinite(amount)&&amount>=0?amount.toFixed(2).replace('.',','):null;}
 export function rateGap(usdt,bcv){return usdt>0&&bcv>0&&(Number.isFinite(usdt)&&Number.isFinite(bcv))?(usdt/bcv-1)*100:null;}
+
+export function paymentQuotes(rows,live,date){
+  const official=currency=>{const i=currency==='usd'?1:2;return findRate(rows.filter(r=>r[i]>0&&['b','d'].includes(r[4][i-1])),date,currency,{maxDays:7});};
+  const snapshot=live?.usdt;
+  const usdt=snapshot?.value>0&&snapshot.date&&snapshot.date<=date?{...snapshot,carried:snapshot.date!==date}:findRate(rows,date,'usdt',{maxDays:1});
+  return{usd:official('usd'),eur:official('eur'),usdt};
+}
