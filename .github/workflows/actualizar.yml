@@ -1,7 +1,7 @@
 name: Registrar tasas
 on:
   schedule:
-    - cron: '17 1,7,13,19 * * *'
+    - cron: '0 10,22 * * *'
   workflow_dispatch:
 permissions:
   contents: write

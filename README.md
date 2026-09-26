@@ -19,12 +19,16 @@ Gráfico en bolívares actuales; tabla y calculadora en la unidad nominal de cad
 
 ## Actualización
 
-`/api/live` consulta USD/EUR/USDT, con caché CDN de 5 minutos y fechas de origen. `/api/history` incorpora DolarApi, Yadio y observaciones USDT de este repositorio. Consulta al abrir y cada cinco minutos mientras la página está visible; ante fallos muestra los datos guardados con aviso.
+`/api/live` sirve la última instantánea USD/EUR/USDT del registro programado, con caché CDN de 5 minutos y fechas de origen. `/api/history` sirve el histórico consolidado que el registro programado amplía con DolarApi, Yadio y Binance. Consulta el registro guardado al abrir y cada doce horas mientras la página está visible; ante fallos muestra los datos guardados con aviso.
 
-El workflow `Registrar tasas` corre cuatro veces al día (01:17, 07:17, 13:17, 19:17 UTC) y manualmente. Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
+El workflow `Registrar tasas` corre dos veces al día (10:00 y 22:00 UTC; 06:00 y 18:00 en Venezuela) y manualmente. Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
 
 ## Despliegue
 
 `vercel deploy --prod`. Estáticos en `dist`, funciones Node en `api/`. CSP y protección de enmarcado en `vercel.json`. No se recopilan datos privados del visitante. Los originales `historico.json` y `construir_historico.py` se conservan como evidencia histórica; el sitio usa `history.json` y `preparar_v2.py`.
 
 Fuentes: https://www.bcv.org.ve/estadisticas/tipo-cambio-de-referencia-smc · https://dolarapi.com/docs/venezuela/ · https://fred.stlouisfed.org/series/DEXVZUS · https://fred.stlouisfed.org/series/DEXUSEU · https://data.worldbank.org/indicator/PA.NUS.FCRF?locations=VE · https://p2p.binance.com · https://www.yadio.io/info.html
+
+## iPhone y pago móvil
+
+Pantalla principal: entrada USD a BCV y copia de solo el importe en Bs, con coma decimal y sin separadores de miles. La diferencia USDT/BCV usa `(USDT / BCV - 1) × 100`. Las herramientas avanzadas permanecen plegadas. App instalable con manifest standalone, Apple touch icon, áreas seguras y service worker. Después de una visita conectada puede abrirse sin conexión; la UI marca los datos guardados. Apple: https://support.apple.com/es-us/guide/iphone/iphea86e5236/ios

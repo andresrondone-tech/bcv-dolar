@@ -1,2 +1,2 @@
-import {fetchHistory} from '../lib/providers.mjs';
-export default async function handler(req,res){if(req.method!=='GET')return res.status(405).json({error:'Método no permitido'});const data=await fetchHistory();res.setHeader('Cache-Control','public, s-maxage=3600, stale-while-revalidate=300');res.status(data.rows.length?200:503).json(data);}
+import {loadSnapshot} from '../lib/snapshots.mjs';
+export default async function handler(req,res){if(req.method!=='GET')return res.status(405).json({error:'Método no permitido'});try{const data=await loadSnapshot('history.json');res.setHeader('Cache-Control','public, s-maxage=300, stale-while-revalidate=60');res.status(200).json({fetchedAt:data.generated,rows:data.rows,errors:[]});}catch{res.status(503).json({error:'Sin registro histórico disponible'});}}
