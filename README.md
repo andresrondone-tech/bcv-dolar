@@ -1,6 +1,6 @@
-# BCV · consulta de divisas
+# Taza · consulta de divisas
 
-Web independiente de Andrés Rondone para consultar USD, EUR, USDT, convertir importes y explorar fechas históricas. Destino: https://dolar.andresrondone.com.
+Web independiente de Andrés Rondone para consultar USD, EUR, USDT, convertir importes y explorar fechas históricas. Destino: https://taza.andresrondone.com.
 
 ## Ejecutar
 
