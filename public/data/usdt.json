@@ -126,5 +126,13 @@
     "observedAt": "2026-10-11T00:36:41.248Z",
     "count": 10,
     "source": "Binance P2P · mediana de hasta 10 anuncios de comerciantes por lado"
+  },
+  {
+    "date": "2026-10-11",
+    "buy": 1012.8745,
+    "sell": 1010.5,
+    "observedAt": "2026-10-11T16:04:56.953Z",
+    "count": 10,
+    "source": "Binance P2P · mediana de hasta 10 anuncios de comerciantes por lado"
   }
 ]
