@@ -12,7 +12,7 @@ Node 22, sin dependencias. `npm run dev` abre http://127.0.0.1:3187. `npm test` 
 - DolarApi: actualización de USD/EUR oficiales, identificada como fuente intermediaria.
 - FRED DEXVZUS: tasa de compra original, sin aplicar retroactivamente un diferencial fijo. Antes de 2008 se pasa de Bs.F a Bs de la época. El 1 de octubre de 2021 se corrige la unidad antigua publicada por la Fed. DEXUSEU permite estimar EUR; la interfaz etiqueta el cálculo.
 - Banco Mundial PA.NUS.FCRF: 40 promedios anuales 1960–1999 separados de las series diarias.
-- Binance P2P: mediana de hasta diez anuncios de comerciantes por lado, sin filtro por método de pago. Sin precio garantizado ni comisiones. Registro propio desde el 25 de septiembre de 2026.
+- Binance P2P: promedio de las medianas de compra y venta de hasta diez anuncios de comerciantes por lado que aceptan una operación de 100 USDT (`transAmount` en moneda local), sin filtro por método de pago. Igual para VES y COP. Sin precio garantizado ni comisiones. Registro propio desde el 25 de septiembre de 2026; hasta el 10 de noviembre de 2026 era la mediana de compra sin monto.
 - Yadio: referencia de mercado independiente; no se presenta como USDT.
 
 Gráfico en bolívares actuales; tabla y calculadora en la unidad nominal de cada fecha. Se identifica el último dato publicado, máximo 7 días, sin rellenar huecos en la tabla. USDT requiere muestra de la fecha exacta.
