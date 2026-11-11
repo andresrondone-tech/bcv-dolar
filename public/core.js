@@ -8,12 +8,14 @@ export function findRate(rows,date,currency,{carry=true,maxDays=7}={}){const i={
 export function mergeRows(base,extra){const m=new Map(base.map(r=>[r[0],[...r]]));for(const r of extra){const old=m.get(r[0])??[r[0],null,null,null,'---',null];for(let i=1;i<=3;i++)if(Number.isFinite(r[i])&&r[i]>0){const source=r[4]?.[i-1]??'-';if(old[4][i-1]==='b'&&source==='d')continue;old[i]=r[i];old[4]=old[4].slice(0,i-1)+source+old[4].slice(i);}if(r[5]>0)old[5]=r[5];m.set(r[0],old);}return[...m.values()].sort((a,b)=>a[0].localeCompare(b[0]));}
 export function chartPoints(rows,currency,end,days){const index={usd:1,eur:2,usdt:3,market:5}[currency];const start=days==='all'?'0000':new Date(Date.parse(end)-Number(days)*86400000).toISOString().slice(0,10);return rows.filter(r=>r[0]>=start&&r[0]<=end&&r[index]>0).map(r=>({date:r[0],value:r[index]*eraAt(r[0]).factor,nominal:r[index],source:currency==='market'?'y':r[4][index-1]}));}
 
-export function bankAmount(amount){return Number.isFinite(amount)&&amount>=0?amount.toFixed(2).replace('.',','):null;}
+export function bankAmount(amount,decimals=2){return Number.isFinite(amount)&&amount>=0?amount.toFixed(decimals).replace('.',','):null;}
 export function rateGap(usdt,bcv){return usdt>0&&bcv>0&&(Number.isFinite(usdt)&&Number.isFinite(bcv))?(usdt/bcv-1)*100:null;}
 
 export function paymentQuotes(rows,live,date){
   const official=currency=>{const i=currency==='usd'?1:2;return findRate(rows.filter(r=>r[i]>0&&['b','d'].includes(r[4][i-1])),date,currency,{maxDays:7});};
   const snapshot=live?.usdt;
   const usdt=snapshot?.value>0&&snapshot.date&&snapshot.date<=date?{...snapshot,carried:snapshot.date!==date}:findRate(rows,date,'usdt',{maxDays:1});
-  return{usd:official('usd'),eur:official('eur'),usdt};
+  const peso=live?.cop;
+  const cop=peso?.value>0&&peso.date&&peso.date<=date&&(Date.parse(date)-Date.parse(peso.date))/86400000<=1?{...peso,carried:peso.date!==date}:null;
+  return{usd:official('usd'),eur:official('eur'),usdt,cop};
 }

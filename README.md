@@ -19,9 +19,9 @@ Gráfico en bolívares actuales; tabla y calculadora en la unidad nominal de cad
 
 ## Actualización
 
-`/api/live` sirve la última instantánea USD/EUR/USDT del registro programado, con caché CDN de 5 minutos y fechas de origen. `/api/history` sirve el histórico consolidado que el registro programado amplía con DolarApi, Yadio y Binance. Consulta el registro guardado al abrir y cada doce horas mientras la página está visible; ante fallos muestra los datos guardados con aviso.
+`/api/live` sirve la última instantánea USD/EUR/USDT del registro programado, con caché CDN de 5 minutos y fechas de origen. `/api/history` sirve el histórico consolidado que el registro programado amplía con DolarApi, Yadio y Binance. Consulta el registro guardado al abrir y cada seis horas mientras la página está visible; ante fallos muestra los datos guardados con aviso.
 
-El workflow `Registrar tasas` corre dos veces al día (10:00 y 22:00 UTC; 06:00 y 18:00 en Venezuela) y manualmente. Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
+El workflow `Registrar tasas` corre cada 6 horas (04:07, 10:07, 16:07 y 22:07 UTC; 00:00, 06:00, 12:00 y 18:00 en Venezuela) y manualmente. También registra la mediana USDT/COP de Binance P2P para la pestaña Peso COL (solo la muestra del día, sin histórico). Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
 
 ## Despliegue
 
@@ -31,4 +31,4 @@ Fuentes: https://www.bcv.org.ve/estadisticas/tipo-cambio-de-referencia-smc · ht
 
 ## iPhone y pago móvil
 
-Pantalla principal: entrada con selector BCV (predeterminado), euro o USDT y copia de solo el importe en Bs, con coma decimal y sin separadores de miles. La diferencia USDT/BCV usa `(USDT / BCV - 1) × 100`. Las herramientas avanzadas permanecen plegadas. App instalable con manifest standalone, Apple touch icon, áreas seguras y service worker. Después de una visita conectada puede abrirse sin conexión; la UI marca los datos guardados. Apple: https://support.apple.com/es-us/guide/iphone/iphea86e5236/ios
+Pantalla principal: selector BCV (predeterminado), euro, USDT o peso colombiano; los dos campos son editables (divisa → Bs/COP o Bs/COP → divisa) y se copia solo el importe calculado, con coma decimal y sin separadores de miles. La diferencia USDT/BCV usa `(USDT / BCV - 1) × 100`. Las herramientas avanzadas permanecen plegadas. App instalable con manifest standalone, Apple touch icon, áreas seguras y service worker. Después de una visita conectada puede abrirse sin conexión; la UI marca los datos guardados. Apple: https://support.apple.com/es-us/guide/iphone/iphea86e5236/ios
