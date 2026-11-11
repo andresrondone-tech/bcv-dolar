@@ -21,7 +21,7 @@ Gráfico en bolívares actuales; tabla y calculadora en la unidad nominal de cad
 
 `/api/live` sirve la última instantánea USD/EUR/USDT del registro programado, con caché CDN de 5 minutos y fechas de origen. `/api/history` sirve el histórico consolidado que el registro programado amplía con DolarApi, Yadio y Binance. Consulta el registro guardado al abrir y cada seis horas mientras la página está visible; ante fallos muestra los datos guardados con aviso.
 
-El workflow `Registrar tasas` corre cada 6 horas (04:07, 10:07, 16:07 y 22:07 UTC; 00:00, 06:00, 12:00 y 18:00 en Venezuela) y manualmente. También registra la mediana USDT/COP de Binance P2P para la pestaña Peso COL (solo la muestra del día, sin histórico). Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
+El workflow `Registrar tasas` corre cada 6 horas (04:07, 10:07, 16:07 y 22:07 UTC; 00:00, 06:00, 12:00 y 18:00 en Venezuela) y manualmente. También registra la mediana USDT/COP de Binance P2P para la pestaña COP (solo la muestra del día, sin histórico). Conserva la última muestra diaria en `public/data/usdt.json`, respalda `latest.json` y amplía `history.json`. Usa el token efímero de Actions, sin claves externas. Los cron de GitHub pueden retrasarse; revisar periódicamente Actions. Si todas las fuentes fallan, conserva los archivos y falla de forma visible. No sustituye USDT por otro activo cuando Binance está inaccesible.
 
 ## Despliegue
 
