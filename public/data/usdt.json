@@ -410,12 +410,12 @@
   },
   {
     "date": "2026-11-14",
-    "mid": 1076.55,
-    "buy": 1083.85,
-    "sell": 1069.25,
-    "amount": 107480,
+    "mid": 1071.8245,
+    "buy": 1076.899,
+    "sell": 1066.75,
+    "amount": 107150,
     "amountUSDT": 100,
-    "observedAt": "2026-11-14T11:20:54.423Z",
+    "observedAt": "2026-11-14T20:34:05.917Z",
     "count": 10,
     "source": "Binance P2P · promedio de las medianas de compra y venta de hasta 10 anuncios de comerciantes que aceptan 100 USDT"
   }
