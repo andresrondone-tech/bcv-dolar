@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-26T13:43:15.441Z",
+  "fetchedAt": "2026-11-27T00:28:48.184Z",
   "date": "2026-11-26",
   "usd": {
     "value": 924.3534,
@@ -14,50 +14,50 @@
     "source": "d"
   },
   "usdt": {
-    "value": 1105.1775,
-    "buy": 1108.5,
-    "sell": 1101.855,
+    "value": 1090.00425,
+    "buy": 1092.9515000000001,
+    "sell": 1087.057,
     "buySample": {
-      "value": 1108.5,
-      "min": 1107.999,
-      "max": 1109.5,
+      "value": 1092.9515000000001,
+      "min": 1087,
+      "max": 1093.7,
       "count": 10
     },
     "sellSample": {
-      "value": 1101.855,
-      "min": 1101.6,
-      "max": 1103.111,
+      "value": 1087.057,
+      "min": 1086.302,
+      "max": 1087.501,
       "count": 10
     },
     "count": 10,
-    "amount": 110428,
+    "amount": 108740,
     "amountUSDT": 100,
     "date": "2026-11-26",
-    "updatedAt": "2026-11-26T13:43:15.441Z",
+    "updatedAt": "2026-11-27T00:28:48.184Z",
     "source": "x",
     "fiat": "VES"
   },
   "cop": {
-    "value": 3502.4975,
-    "buy": 3529.98,
-    "sell": 3475.015,
+    "value": 3506.5975,
+    "buy": 3527.435,
+    "sell": 3485.76,
     "buySample": {
-      "value": 3529.98,
-      "min": 3518.87,
-      "max": 3533.98,
+      "value": 3527.435,
+      "min": 3524,
+      "max": 3528,
       "count": 10
     },
     "sellSample": {
-      "value": 3475.015,
-      "min": 3471,
-      "max": 3497,
+      "value": 3485.76,
+      "min": 3481.61,
+      "max": 3493,
       "count": 10
     },
     "count": 10,
-    "amount": 351882,
+    "amount": 352150,
     "amountUSDT": 100,
     "date": "2026-11-26",
-    "updatedAt": "2026-11-26T13:43:15.441Z",
+    "updatedAt": "2026-11-27T00:28:48.184Z",
     "source": "x",
     "fiat": "COP"
   },
